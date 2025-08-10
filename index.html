@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #85be3e;
+            --secondary: #aa3fdc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+        
+        .dark {
+            background-color: #1F2937;
+            color: #F9FAFB;
+        }
+        
+        .light {
+            background-color: #F9FAFB;
+            color: #1F2937;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .skill-card {
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-card {
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    <header class="fixed w-full z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center bg-white dark:bg-gray-800">
+            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">MyPortfolio</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+                <a href="#Certificate" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Certificate</a>
+                <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+            </div>
+            <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
+                <i id="sun-icon" class="fas fa-sun text-gray-600 dark:text-gray-300"></i>
+                <i id="moon-icon" class="fas fa-moon text-gray-600 dark:text-gray-300 hidden"></i>
+            </button>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="p-2 focus:outline-none">
+                    <i class="fas fa-bars text-gray-600 dark:text-gray-300"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-6 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 py-2">Home</a>
+                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 py-2">Skills</a>
+                <a href="#Certificate" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 py-2">Certificate</a>
+                <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="section flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="hero-content text-center md:text-left flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <img src="e4a142ca-f962-4165-ad0b-b97ad30a8314.jpg" alt="Yash Gupta in formal suit standing in front of a floral background with lights" 
+                         class="w-full h-full object-cover rounded-xl shadow-lg" onerror="this.parentElement.style.background='#E5E7EB'">
+
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800 dark:text-white">
+                            Hi, I'm <span class="text-indigo-600 dark:text-indigo-400">YASH GUPTA </span>
+                        </h1>
+                        <h2 class="text-2xl md:text-3xl mb-6 text-gray-600 dark:text-gray-300">
+                            <span id="typed" class="text-indigo-600 dark:text-indigo-400"></span>
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                            I’m a passionate web developer and creative designer, dedicated to building visually stunning and user-friendly digital experiences. With a strong eye for design and a commitment to clean, efficient code, I craft websites and interfaces that combine beauty with functionality. As a cyber volunteer, I also promote digital safety and awareness in the online community
+                        </p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+                            <a href="#contact" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium text-center transition duration-300">
+                                Contact Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">My Skills & Tools</h2>
+                    <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        I've worked with a variety of technologies in my development journey. Here are some of my core skills and the tools I use regularly.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="skill-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                        <div class="text-indigo-600 dark:text-indigo-400 text-4xl mb-4">
+                
+                        </div>
+                
+                        <div class="text-indigo-600 dark:text-indigo-400 text-4xl mb-4">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">JavaScript</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Modern ES6+ features and functional programming</p>
+                    </div>
+                    
+                    <div class="skill-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                        <div class="text-indigo-600 dark:text-indigo-400 text-4xl mb-4">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Node.js</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Server-side JavaScript for backend development</p>
+                    </div>
+                    
+                    <div class="skill-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                        <div class="text-indigo-600 dark:text-indigo-400 text-4xl mb-4">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">CSS3</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Modern styling with Flexbox, Grid, and animations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificate  Section -->
+        <section id="Certificate" class="section bg-gray-50 dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Certificate</h2>
+                    <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                    
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                           <img src="download.jpg" alt="HTML text displayed on a computer screen" 
+                             class="w-full h-full object-cover rounded-xl shadow-lg" onerror="this.parentElement.style.background='#E5E7EB'">
+
+                        </div>
+                        <div class="project-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Hyper Text Markup Language</h3>
+                            <p class="text-center px-4 mb-4">Web Pages Development</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg">Reg. No. - 761898</a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white"> HTML</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A responsive dashboard providing real-time insights with beautiful visualizations.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">React</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">D3.js</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Material UI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                        <img src="images.jpg" alt="CSS text displayed on a computer screen" 
+                          class="w-full h-full object-cover rounded-xl shadow-lg" onerror="this.parentElement.style.background='#E5E7EB'">
+
+                        </div>
+                        <div class="project-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Cascading Style Sheets</h3>
+                            <p class="text-center px-4 mb-4"> Special effects such as animation</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg">Reg. No. - 000000</a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">CSS</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A style sheet language used for specifying the presentation and styling of a document written in a markup language such as HTML or XML</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">React Native</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Firebase</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Redux</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                            <img src="download.png"  alt="JavaScript text displayed on a computer screen" 
+                               class="w-full h-full object-cover rounded-xl shadow-lg" onerror="this.parentElement.style.background='#E5E7EB'">
+
+                        </div>
+                        <div class="project-overlay">
+                            <h3 class="text-2xl font-bold mb-2">JavaScript</h3>
+                            <p class="text-center px-4 mb-4">JavaScript is a versatile, high-level programming language primarily known for its role in web development. Its core use is to add interactivity and dynamic behavior to web pages, complementing HTML (structure) and CSS (styling).</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg">Cert. No.- 000000</a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">JAVA SCRIPT </h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Front-end Web development, improving the user interface and interactivity for websites</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Next.js</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Stripe</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md">
+                        <div class="h-48 overflow-hidden">
+                            <img src="download.jpg" alt="web developer text displayed on a computer screen" 
+                              class="w-full h-full object-cover rounded-xl shadow-lg" onerror="this.parentElement.style.background='#E5E7EB'">
+
+                        </div>
+                        <div class="project-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Web Developer</h3>
+                            <p class="text-center px-4 mb-4">A web developer is a professional who designs, builds, and maintains websites and web applications</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg">Cert.No. -000000</a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Web Developer</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Web Developers are required to be proficient at coding with languages like HTML, CSS, JavaScript for front-end development & back-end programming.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Vue.js</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">Node.js</span>
+                                <span class="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">WebSockets</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Get In Touch</h2>
+                    <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        Have a project in mind or want to discuss potential opportunities? Feel free to reach out and I'll get back to you as soon as possible.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 dark:text-indigo-400 text-xl mr-6 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Email</h3>
+                                    <p class="text-gray-600 dark:text-gray-300">yashguptakot01@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 dark:text-indigo-400 text-xl mr-6 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Location</h3>
+                                    <p class="text-gray-600 dark:text-gray-300">ALWAR ,RAJASTHAN  </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 dark:text-indigo-400 text-xl mr-6 mt-1">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Social Media</h3>
+                                    <div class="flex space-x-4">
+                                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                            <i class="fab fa-linkedin-in text-xl"></i>
+                                        </a>
+                                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                            <i class="fab fa-github text-xl"></i>
+                                        </a>
+                                        <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
+                                            <i class="fab fa-twitter text-xl"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold text-white mb-2">YASH GUPTA </h2>
+                    <p class="text-gray-400">Web Developer </p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-dribbble text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 yashgupta. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+        
+        // Check for saved user preference
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.classList.add(currentTheme === 'dark' ? 'dark' : 'light');
+        if (currentTheme === 'dark') {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        } else {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Typing animation for hero section
+        const typedElement = document.getElementById('typed');
+        const professions = ['A Web Developer', 'A UI/UX Designer', 'A Mathematics Student', 'A Cyber Volunteer'];
+        let currentProfession = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        function type() {
+            const fullText = professions[currentProfession];
+            
+            if (isDeleting) {
+                typedElement.textContent = fullText.substring(0, currentChar - 1);
+                currentChar--;
+                typingSpeed = 50;
+            } else {
+                typedElement.textContent = fullText.substring(0, currentChar + 1);
+                currentChar++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && typedElement.textContent === fullText) {
+                isDeleting = true;
+                typingSpeed = 1500; // Pause at end of word
+            } else if (isDeleting && typedElement.textContent === '') {
+                isDeleting = false;
+                currentProfession = (currentProfession + 1) % professions.length;
+                typingSpeed = 500; // Pause between words
+            }
+            
+            setTimeout(type, typingSpeed);
+        }
+        
+        // Start the typing animation
+        type();
+    </script>
+</body>
+</html>
+
